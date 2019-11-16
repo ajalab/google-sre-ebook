@@ -16,6 +16,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     zlib1g-dev \
     file \
+    texlive \
+    texlive-plain-generic texlive-latex-base texlive-latex-extra \
+    texlive-xetex \
+    lmodern \
     && gem install bundler --no-ri --no-rdoc \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*

@@ -65,18 +65,16 @@ done
 echo "Generate book ..."
 bundle exec ruby generate.rb
 pushd html/landing.google.com/sre/${BOOK_NAME}/toc
-pandoc --from=html --to=epub                                 \
-    --output=../../../../../${BOOK_FILE}.epub                \
-    --epub-metadata=../../../../../metadata/${BOOK_NAME}.xml \
-    --epub-cover-image=../../../../../cover/${BOOK_NAME}.jpg \
+pandoc --from=html --latex-engine=xelatex                       \
+    --output=../../../../../${BOOK_FILE}.pdf                 \
     complete.html
 popd
 
 #
 # Generate other format from epub.
-for EXTENSION in mobi pdf; do
-    ebook-convert ${BOOK_FILE}.epub ${BOOK_FILE}.${EXTENSION}
-done
+# for EXTENSION in mobi pdf; do
+#     ebook-convert ${BOOK_FILE}.epub ${BOOK_FILE}.${EXTENSION}
+# done
 
 #
 # If it works inside docker.
